@@ -226,6 +226,9 @@ function handlePrPage() {
 }
 
 function handlePrCreatePage() {
+    if (prTemplate === "") {
+        return false;
+    }
     var body = $("textarea#pull_request_body");
     if (body.attr('jira-loading') == 1) {
         return false; //Already loading
@@ -265,6 +268,5 @@ function handlePrCreatePage() {
             });
         }
     }
-
     body.val(prTemplate.replace('{{TICKETURL}}', ticketUrl).replace('{{DESCRIPTION}}', ticketDescription).replace('{{ACCEPTANCE}}', acceptanceList));
 }
